@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 export const Spacecraft = ({ name }: SpaceCraftProps) => (
   <p>
     <span role="img" aria-label="rocket">
@@ -6,6 +6,6 @@ export const Spacecraft = ({ name }: SpaceCraftProps) => (
     </span>
     Awesome spacecraft: <strong>{name}</strong>
   </p>
-);
+)
 
-type SpaceCraftProps = { name: string };
+type SpaceCraftProps = { name: string }

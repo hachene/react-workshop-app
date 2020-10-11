@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Astronaut } from "./Astronaut/Astronaut";
-import { Spacecraft } from "./Spacecraft/Spacecraft";
+import React, { useEffect, useState } from 'react'
+import { Astronaut } from './Astronaut/Astronaut'
+import { Spacecraft } from './Spacecraft/Spacecraft'
 
 export const Mission = () => {
   const [astronautsState, setAstronautStates] = useState({
     astronauts: [
-      { firstName: "Valentina", lastName: "Tereshkova" },
-      { firstName: "Yuri", lastName: "Gagarin" },
+      { firstName: 'Valentina', lastName: 'Tereshkova' },
+      { firstName: 'Yuri', lastName: 'Gagarin' },
     ],
-  });
+  })
 
-  const [spaceCraftState, setSpaceCraftState] = useState("");
+  const [spaceCraftState, setSpaceCraftState] = useState('')
 
-  useEffect(() => console.log("Hello Mission"), []);
+  useEffect(() => console.log('Hello Mission'), [])
 
   const addAstronaut = () => {
     setAstronautStates({
-      astronauts: [
-        ...astronautsState.astronauts,
-        { firstName: "Juan", lastName: "Martínez" },
-      ],
-    });
-  };
+      astronauts: [...astronautsState.astronauts, { firstName: 'Juan', lastName: 'Martínez' }],
+    })
+  }
 
   const addSpaceCraft = () => {
-    setSpaceCraftState("Sputnik 1");
-  };
+    setSpaceCraftState('Sputnik 1')
+  }
 
   return (
     <div>
@@ -40,12 +37,12 @@ export const Mission = () => {
         firstName={astronautsState.astronauts[1].firstName}
         lastName={astronautsState.astronauts[1].lastName}
       />
-      {spaceCraftState != "" && (
+      {spaceCraftState !== '' && (
         <div>
           <p>Will travel on a</p>
           <Spacecraft name={spaceCraftState} />
         </div>
       )}
     </div>
-  );
-};
+  )
+}

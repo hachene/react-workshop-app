@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 export class Planet extends Component<PlanetProps> {
   render() {
-    const { name, children } = this.props;
+    const { name, children } = this.props
 
     return (
       <div>
@@ -10,10 +10,10 @@ export class Planet extends Component<PlanetProps> {
           Planet {name} with satellites: {children}
         </h2>
       </div>
-    );
+    )
   }
 }
 
 type PlanetProps = {
-  name: string;
-};
+  name: string
+}
