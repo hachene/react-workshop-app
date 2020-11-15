@@ -1,42 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Astronaut } from './Astronaut/Astronaut'
 import { Spacecraft } from './Spacecraft/Spacecraft'
+import { addAstronaut } from './duck/mission.actions'
+import { MissionState } from './duck/mission.types'
 
 export const Mission = () => {
-  const [astronautsState, setAstronautStates] = useState({
-    astronauts: [
-      { firstName: 'Valentina', lastName: 'Tereshkova' },
-      { firstName: 'Yuri', lastName: 'Gagarin' },
-    ],
-  })
-
   const [spaceCraftState, setSpaceCraftState] = useState('')
 
-  useEffect(() => console.log('Hello Mission'), [])
+  const dispatch = useDispatch()
 
-  const addAstronaut = () => {
-    setAstronautStates({
-      astronauts: [...astronautsState.astronauts, { firstName: 'Juan', lastName: 'Martínez' }],
-    })
+  const handleAddAstronaut = () => {
+    dispatch(addAstronaut({ firstName: 'Valentina', lastName: '' }))
   }
 
   const addSpaceCraft = () => {
     setSpaceCraftState('Sputnik 1')
   }
 
+  // EXPLAIN: We shouldn't be using this line
+  const astronauts = useSelector<MissionState, MissionState['astronauts']>(state => state.astronauts)
+
   return (
     <div>
       <h1>Mission 1</h1>
-      <button onClick={addAstronaut}>Add astronaut</button>
+      <button onClick={handleAddAstronaut}>Add astronaut</button>
       <button onClick={addSpaceCraft}>Add spacecraft</button>
-      <Astronaut
-        firstName={astronautsState.astronauts[0].firstName}
-        lastName={astronautsState.astronauts[0].lastName}
-      />
-      <Astronaut
-        firstName={astronautsState.astronauts[1].firstName}
-        lastName={astronautsState.astronauts[1].lastName}
-      />
+
+      {astronauts.map(({ firstName, lastName }) => (
+        <Astronaut firstName={firstName} lastName={lastName} />
+      ))}
+
       {spaceCraftState !== '' && (
         <div>
           <p>Will travel on a</p>
@@ -46,3 +40,9 @@ export const Mission = () => {
     </div>
   )
 }
+
+// EXPLAIN: We shouldn't be using this maps
+
+// const mapStateToProps = (state: MissionState) => ({astronauts: state.astronauts})
+
+// const mapDispatchToProps = (dispatch) => ({onAstronautAdded: ()=> dispatch({type: actionTypes.ADD_ASTRONAUT})})
