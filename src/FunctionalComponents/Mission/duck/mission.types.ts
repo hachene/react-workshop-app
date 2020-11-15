@@ -1,7 +1,3 @@
-const ADD_ASTRONAUT = 'ADD_ASTRONAUT'
-const REMOVE_ASTRONAUT = 'REMOVE_ASTRONAUT'
-
-export default {
-  ADD_ASTRONAUT,
-  REMOVE_ASTRONAUT,
+export type MissionState = {
+  readonly astronauts: { firstName: string; lastName: string }[]
 }

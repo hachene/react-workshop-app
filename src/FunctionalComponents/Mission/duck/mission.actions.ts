@@ -1,18 +1,13 @@
-import { ActionType } from 'typesafe-actions/dist/type-helpers'
-import types from './mission.types'
+import { ActionType, createAction } from 'typesafe-actions'
 
-const addAstronaut = ({ firstName, lastName }: { firstName: string; lastName: string }) => ({
-  type: types.ADD_ASTRONAUT,
-  payload: { firstName, lastName },
-})
+export const addAstronaut = createAction('mission/ADD_ASTRONAUT')<{
+  firstName: string
+  lastName: string
+}>()
 
-const removeAstronaut = () => ({
-  type: types.REMOVE_ASTRONAUT,
-})
-
-export default {
-  addAstronaut,
-  removeAstronaut,
-}
+export const removeAstronaut = createAction('mission/ADD_ASTRONAUT')<{
+  firstName: string
+  lastName: string
+}>()
 
 export type MissionAction = ActionType<typeof addAstronaut | typeof removeAstronaut>
