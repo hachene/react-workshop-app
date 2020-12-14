@@ -6,7 +6,7 @@ const initialState: MissionState = {
   astronauts: [],
 }
 
-const reducer = (state: MissionState = initialState, action: MissionAction): MissionState => {
+const missionReducer = (state: MissionState = initialState, action: MissionAction): MissionState => {
   switch (action.type) {
     case getType(addAstronaut): {
       return {
@@ -24,4 +24,4 @@ const reducer = (state: MissionState = initialState, action: MissionAction): Mis
   }
 }
 
-export default reducer
+export default missionReducer

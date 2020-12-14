@@ -27,9 +27,8 @@ export const Mission = () => {
       <button onClick={handleAddAstronaut}>Add astronaut</button>
       <button onClick={addSpaceCraft}>Add spacecraft</button>
 
-      {astronauts.map(({ firstName, lastName }) => (
-        <Astronaut firstName={firstName} lastName={lastName} />
-      ))}
+      {astronauts &&
+        astronauts.map(({ firstName, lastName }) => <Astronaut firstName={firstName} lastName={lastName} />)}
 
       {spaceCraftState !== '' && (
         <div>
