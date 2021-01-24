@@ -18,7 +18,7 @@ export const Mission = () => {
     setSpaceCraftState('Sputnik 1')
   }
 
-  // EXPLAIN: We shouldn't be using this line
+  // EXPLAIN: We usually externalize this to a selector
   const astronauts = useSelector<MissionState, MissionState['astronauts']>(state => state.astronauts)
 
   return (
