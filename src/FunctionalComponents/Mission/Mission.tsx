@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Astronaut } from './Astronaut/Astronaut'
 import { Spacecraft } from './Spacecraft/Spacecraft'
 
@@ -11,8 +11,6 @@ export const Mission = () => {
   })
 
   const [spaceCraftState, setSpaceCraftState] = useState('')
-
-  useEffect(() => console.log('Hello Mission'), [])
 
   const addAstronaut = () => {
     setAstronautStates({
